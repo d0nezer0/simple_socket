@@ -3,28 +3,30 @@
 import socket
 from threading import Thread
 
-host = "192.168.1.17"
-port = 12345
+HOST = "192.168.1.17"
+PORT = 12345
 
 
-def handlechild(clientsock):
+def client_handle(client_socket):
 
-    client_info = str(clientsock.getpeername())
+    client_info = str(client_socket.getpeername())
     print "Got connection from %s" % client_info
     while True:
-        data = clientsock.recv(1024)
+        data = client_socket.recv(1024)
         if not len(data):
             break
         print data
-        clientsock.sendall(client_info)
+        client_socket.sendall(client_info)
     print 'close %s connection.' % client_info
-   #  clientsock.close()
+    # client_socket.close()
 
 
+# define socket type, TCP
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# Set options on the socket.
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-sock.bind((host, port))
-sock.listen(1)
+sock.bind((HOST, PORT))
+sock.listen(10)
 
 while True:
     print 'waiting for connection...'
@@ -36,7 +38,6 @@ while True:
         print 'exception: ', e
         continue
 
-    t = Thread(target=handlechild, args=[client_sock])
+    t = Thread(target=client_handle, args=[client_sock])
     t.setDaemon(1)
     t.start()
-
