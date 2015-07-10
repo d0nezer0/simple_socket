@@ -22,3 +22,4 @@ http://faculty.salina.k-state.edu/tim/NPstudy_guide/sockets/socket-programming.h
 
 http://yangrong.blog.51cto.com/6945369/1339593
 
+http://www.binarytides.com/code-chat-application-server-client-sockets-python/
