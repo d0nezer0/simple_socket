@@ -3,21 +3,30 @@
 import socket
 from threading import Thread
 
-HOST = "localhost"
+HOST = 'localhost'
 PORT = 12345
+BUFSIZE = 2014
 
 
 def client_handle(client_socket):
 
     client_info = str(client_socket.getpeername())
     print "Got connection from %s" % client_info
+
     while True:
-        data = client_socket.recv(1024)
+        data = client_socket.recv(BUFSIZE)
         if not data:
             print 'missed a message!!!'
             continue
-        print data
-        client_socket.sendall('message received!')
+        else:
+            print data
+            # admin_message = raw_input('admin says: ')
+            # if admin_message:
+            #     client_socket.sendall('admin says: ' + admin_message)
+            # else:
+            #     client_socket.sendall('message received!')
+            client_socket.sendall('message received from %s!' % client_info)
+
     print 'close %s connection.' % client_info
     # client_socket.close()
 

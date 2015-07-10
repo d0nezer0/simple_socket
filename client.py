@@ -32,7 +32,9 @@ while True:
     server_data = tcp_client.recv(BUFSIZE)
 
     if not server_data:
-        break
-    print server_data
+        print 'missed a message!!!'
+        continue
+    else:
+        print server_data
 
 tcp_client.close()
