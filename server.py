@@ -3,7 +3,7 @@
 import socket
 from threading import Thread
 
-HOST = "192.168.1.17"
+HOST = "localhost"
 PORT = 12345
 
 
@@ -13,10 +13,11 @@ def client_handle(client_socket):
     print "Got connection from %s" % client_info
     while True:
         data = client_socket.recv(1024)
-        if not len(data):
-            break
+        if not data:
+            print 'missed a message!!!'
+            continue
         print data
-        client_socket.sendall(client_info)
+        client_socket.sendall('message received!')
     print 'close %s connection.' % client_info
     # client_socket.close()
 
