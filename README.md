@@ -9,6 +9,7 @@ My target:
 2. a udp socket, show all the login members, and send a message for a target member.
 
 TODO: get a DB for registers.
+
 TODO: add friends whit email or username, and send message for friends only.
 
 TODO: package a exe file for windows user, we can talk with this app.
