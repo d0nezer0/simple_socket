@@ -6,11 +6,12 @@ My target:
    can send a broadcast for all the connected members.
    # can send a message for a target member.
 
-2. a udp socket, show all the logined members, and send a message for a target member.
+2. a udp socket, show all the login members, and send a message for a target member.
 
 TODO: get a DB for registers.
 TODO: add friends whit email or username, and send message for friends only.
 
+TODO: package a exe file for windows user, we can talk with this app.
 
 
 

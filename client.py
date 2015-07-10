@@ -17,6 +17,8 @@ while True:
     data = raw_input('>')
     if not data:
         continue
+    if len(data) > BUFSIZE:
+        print 'You can send %s below' % BUFSIZE
     tcp_client.send(data)
     data = tcp_client.recv(BUFSIZE)
 

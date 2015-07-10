@@ -21,10 +21,12 @@ def client_handle(client_socket):
     # client_socket.close()
 
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)        # define socket type， 网络通信，TCP
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)      #
-sock.bind((HOST, PORT))                                         #
-sock.listen(10)                                                 #
+# define socket type, TCP
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# Set options on the socket.
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+sock.bind((HOST, PORT))
+sock.listen(10)
 
 while True:
     print 'waiting for connection...'
@@ -39,4 +41,3 @@ while True:
     t = Thread(target=client_handle, args=[client_sock])
     t.setDaemon(1)
     t.start()
-
